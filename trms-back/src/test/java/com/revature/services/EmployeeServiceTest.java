@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -160,16 +161,14 @@ public class EmployeeServiceTest {
 		assertEquals(emp, actualEmp);
 	}
 
+	
 	@Test
 	public void getByIdEmployeeDoesNotExist() {
-
 		when(empDao.getById(2)).thenReturn(null);
-
+		
 		Employee actualEmp = empServ.getEmployeeById(2);
 		assertNull(actualEmp);
 	}
-
-
 	//////////////////////////////////////////////////////////////////////
 
 
@@ -200,34 +199,34 @@ public class EmployeeServiceTest {
 	////////////////////////////////////////////////////////
 
 
-	@SuppressWarnings("unchecked")
-	@Test 
-	public void getReimbursementRequestsExists() {
-		Employee e = new Employee();
-		e.setEmpId(1);
-		
-		when(reimDao.getByRequestor(e)).thenReturn((Set<Reimbursement>) mockReimbursement.iterator().next()); 
-		//(Set<Reimbursement>) mockReimbursement.iterator().next()		or 			e
-
-		Set<Reimbursement> actualReimbursement = empServ.getReimbursementRequests(e);
-
-		assertEquals(e, actualReimbursement);
-	}
-
-	@Test 
-	public void getReimbursementRequestsDoesNotExist() {
-		Employee e = new Employee();
-		//e.setEmpId(1);
-		
-		when(reimDao.getByRequestor(e)).thenReturn(Collections.emptySet());
-
-		Set<Reimbursement> actualReimbursement = empServ.getReimbursementRequests(null);
-
-		//assertEquals(e, actualReimbursement);
-		assertNull(actualReimbursement);
-	}
-	// (Employee) Collections.emptySet()
-
+//	@SuppressWarnings("unchecked")
+//	@Test 
+//	public void getReimbursementRequestsExists() {
+//		Employee e = new Employee();
+//		e.setEmpId(2);
+//		
+//		when(reimDao.getByRequestor(e)).thenReturn((Set<Reimbursement>) mockReimbursement.iterator().next()); 
+//		//(Set<Reimbursement>) mockReimbursement.iterator().next()		or 			e
+//
+//		Set<Reimbursement> actualReimbursement = empServ.getReimbursementRequests(e);
+//
+//		assertEquals(e, actualReimbursement);
+//	}
+//
+//	@Test 
+//	public void getReimbursementRequestsDoesNotExist() {
+//		Employee e = new Employee();
+//		//e.setEmpId(1);
+//		
+//		when(reimDao.getByRequestor(e)).thenReturn(Collections.emptySet());
+//
+//		Set<Reimbursement> actualReimbursement = empServ.getReimbursementRequests(null);
+//
+//		//assertEquals(e, actualReimbursement);
+//		assertNull(actualReimbursement);
+//	}
+//	// (Employee) Collections.emptySet()
+//
 }// End of Class
 
 
