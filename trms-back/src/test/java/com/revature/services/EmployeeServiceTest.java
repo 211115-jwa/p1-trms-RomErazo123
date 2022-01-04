@@ -17,6 +17,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.revature.beans.Comment;
+import com.revature.beans.Department;
 import com.revature.beans.Employee;
 import com.revature.beans.Reimbursement;
 import com.revature.data.CommentDAO;
@@ -37,38 +38,85 @@ public class EmployeeServiceTest {
 	@Mock
 	private ReimbursementDAO reimDao;
 
+	private static Set<Department> mockDept;
 	private static Set<Employee> mockEmployee;
 	private static Set<Reimbursement> mockReimbursement;
+	private static Set<Comment> mockComment;
 	
 	
 	@InjectMocks
 	private EmployeeService empServ = new EmployeeServiceImpl();
-
-
+	
 	@BeforeAll // Filling or creating the Mock 
-	public static void mockSetupEmployee() {
+	public static void mockSetupComment() {
+		mockComment = new HashSet <> ();// Create the mock
 		
-		mockEmployee = new HashSet <> ();// Create the mock		
-		Employee employee = new Employee();		
-		for (int i=1; i<=5; i++) { 
-			employee.setEmpId(i);
-			if (i < 3) employee.setEmpId(i);
-			mockEmployee.add(employee);
+		for (int i=1; i<=2; i++) {
+			Comment c = new Comment();
+			
+			c.setCommentId(i);
+			c.setCommentText("Test");
+			
+			c.setRequest(new Reimbursement());
+			c.getRequest().setReqId(i);
+			
+			c.setApprover(new Employee());
+			c.getApprover().setEmpId(i);
+			mockComment.add(c);
 		}
-		
-	}// End of mockSetup
+	}
+	
+	
+	@BeforeAll // Filling or creating the Mock 
+	public static void mockSetupDepartment() {
+		mockDept = new HashSet <> ();// Create the mock
+		Department d = new Department();
+		d.setDeptId(1);
+		d.setDeptHeadId(24);
+		d.setName("Test Name");
+		mockDept.add(d);
+	}
 
 	@BeforeAll
 	public static void mockSetupReimbursement() {
 		
 		mockReimbursement = new HashSet<> (); // Create the Mock
-		Reimbursement reimbursement = new Reimbursement();
+		
 		for (int i=1; i<=5; i++) { 
+			Employee employee = new Employee();
+			employee.setEmpId(i);
+			
+			Reimbursement reimbursement = new Reimbursement();
+			
 			reimbursement.setReqId(i); 
-			if (i<3) reimbursement.setReqId(i);
+			reimbursement.setRequestor(employee);
+			//reimbursement.getRequestor().setEmpId(1);
+			reimbursement.getStatus().setStatusId(i);
 			mockReimbursement.add(reimbursement);
-
 		}// End of Filling up the Mock
+	}// End of mockSetup
+	
+	
+	@BeforeAll // Filling or creating the Mock 
+	public static void mockSetupEmployee() {
+		
+		mockEmployee = new HashSet <> ();// Create the mock		
+				
+		for (int i=1; i<=4; i++) {
+			Employee employee = new Employee();
+			employee.setEmpId(i);
+			employee.setFirstName("Test" + i);
+			employee.setLastName("Test" + i);
+			employee.setUsername("Test" + i);
+			employee.setPassword("Test" + i);
+			employee.setFunds(1000.0);
+			if (i<=3)
+			employee.getSupervisor().setEmpId(3);
+			else employee.getSupervisor().setEmpId(2);
+			employee.getRole().setRoleId(i);
+			mockEmployee.add(employee);
+		}
+		
 	}// End of mockSetup
 	
 	
