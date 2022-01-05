@@ -29,14 +29,14 @@ public class RequestReviewServiceImpl implements RequestReviewService{
 	@SuppressWarnings({ "unchecked", "unlikely-arg-type" })
 	@Override
 	public Set<Reimbursement> getPendingReimbursements(Employee approver) {
-		Set<Reimbursement> requests = reqDao.getByRequestor(approver);
+		Set<Reimbursement> requests = reqDao.getAll();
 
 		Set<Reimbursement> reque = new HashSet<>(); 
 		for (Reimbursement request :requests) { 
-			if(((Set<Reimbursement>) request.getEventType()).contains(statusDao.getByName("Pending"))) { 
+			if(request.getStatus().getName().contains("Pending")) { 
 				reque.add(request); 
 			} // End if
-		} // End For 
+		} // End For .contains(statusDao.getByName("Pending"))
 		requests = reque;
 
 		/*
@@ -47,27 +47,34 @@ public class RequestReviewServiceImpl implements RequestReviewService{
 
 	@Override
 	public void approveRequest(Reimbursement request) {
+		Status st = new Status();
+		st.setStatusId(2);
 		if (reqDao.getById(request.getReqId()) != null) {
+			request.setStatus(st);
 			reqDao.update(request);
-			request = reqDao.getById(request.getReqId());
 		}
 
 	}
 
 	@Override
 	public void rejectRequest(Reimbursement request) {
+		Status st = new Status();
+		st.setStatusId(3);
 		if (reqDao.getById(request.getReqId()) != null) {
+			request.setStatus(st);
 			reqDao.update(request);
-			request = reqDao.getById(request.getReqId());
 		}
 
 	}
 
 	@Override
 	public void rejectRequest(Reimbursement request, Comment comment) {
+		Status st = new Status();
+		st.setStatusId(3);
 		if (reqDao.getById(request.getReqId()) != null) {
+			request.setStatus(st);
 			reqDao.update(request);
-			request = reqDao.getById(request.getReqId());
+			
 			comment.setSentAt(LocalDateTime.now());
 			commentDao.create(comment);
 		}

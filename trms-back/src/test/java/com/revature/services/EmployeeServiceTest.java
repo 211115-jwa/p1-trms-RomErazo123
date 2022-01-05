@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
-
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -91,7 +89,6 @@ public class EmployeeServiceTest {
 			
 			reimbursement.setReqId(i); 
 			reimbursement.setRequestor(employee);
-			//reimbursement.getRequestor().setEmpId(1);
 			reimbursement.getStatus().setStatusId(i);
 			mockReimbursement.add(reimbursement);
 		}// End of Filling up the Mock
@@ -169,6 +166,8 @@ public class EmployeeServiceTest {
 		Employee actualEmp = empServ.getEmployeeById(2);
 		assertNull(actualEmp);
 	}
+	
+	
 	//////////////////////////////////////////////////////////////////////
 
 
@@ -198,64 +197,7 @@ public class EmployeeServiceTest {
 
 	////////////////////////////////////////////////////////
 
-
-//	@SuppressWarnings("unchecked")
-//	@Test 
-//	public void getReimbursementRequestsExists() {
-//		Employee e = new Employee();
-//		e.setEmpId(2);
-//		
-//		when(reimDao.getByRequestor(e)).thenReturn((Set<Reimbursement>) mockReimbursement.iterator().next()); 
-//		//(Set<Reimbursement>) mockReimbursement.iterator().next()		or 			e
-//
-//		Set<Reimbursement> actualReimbursement = empServ.getReimbursementRequests(e);
-//
-//		assertEquals(e, actualReimbursement);
-//	}
-//
-//	@Test 
-//	public void getReimbursementRequestsDoesNotExist() {
-//		Employee e = new Employee();
-//		//e.setEmpId(1);
-//		
-//		when(reimDao.getByRequestor(e)).thenReturn(Collections.emptySet());
-//
-//		Set<Reimbursement> actualReimbursement = empServ.getReimbursementRequests(null);
-//
-//		//assertEquals(e, actualReimbursement);
-//		assertNull(actualReimbursement);
-//	}
-//	// (Employee) Collections.emptySet()
-//
 }// End of Class
 
-
-//@Test
-//public void updateSomethingWrong() {
-//	Employee mockEmployee = new Employee();
-//	mockEmployee.setEmpId(1);
-//	
-//	doNothing().when(empDao).update(Mockito.any(Employee.class));
-//	when(empDao.getById(1)).thenReturn(mockEmployee);
-//	
-//	Employee emply = new Employee();
-//	emply.setEmpId(1);
-//	emply.setUsername("qwertyuiop");
-//	Employee updatedEmp = empServ.???(emply);
-//	assertNotEquals(emply, updatedEmp);
-//}
-
-/*
- * @BeforeAll // Filling or creating the Mock 
- * public static void mockSetup() {
- * mockEmployee = new HashSet <> ();// Create the mock
- * 
- * for (int i=1; i<=5; i++) { Employee employee = new Employee();
- * employee.setEmpId(i); 
- * if (i<3) employee.setFirstName("Bruce");
- * mockEmployee.add(employee); }// End of Filling up the Mock
- * 
- * }// End of mockSetup
- */
 
 
