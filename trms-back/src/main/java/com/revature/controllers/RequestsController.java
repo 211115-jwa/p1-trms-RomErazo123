@@ -60,7 +60,7 @@ public class RequestsController {
 	 */
 	public static void getRequestsByRequestor(Context ctx) {
 		String requestorIdStr = ctx.pathParam("id");
-		
+		System.out.println(requestorIdStr);
 		try {
 			int requestorId = Integer.valueOf(requestorIdStr);
 			Employee requestor = empServ.getEmployeeById(requestorId);

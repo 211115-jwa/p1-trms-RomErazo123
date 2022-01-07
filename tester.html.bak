@@ -1,0 +1,28 @@
+<div class="formGetAllByID">
+        <h2 id="title1">Reimbursement information</h2>
+		  
+          <input type="number" id="eim" placeholder= "Enter Employee ID">
+          <br>
+          <br>
+		  <button id= "ReimbursementAllList">Submit</button>
+		  <br>
+		  <br>
+		<table id= "ReimbursementList" class= "collapse">
+			<tr>
+				<th>ReimbursementID</th>
+				<th>EmployeeID</th>
+				<th>EventDate</th>
+				<th>EventTime</th>
+				<th>Location</th>
+				<th>Description</th>
+				<th>Cost</th>
+				<th>GradingId</th>
+				<th>EventId</th>
+				<th>StatusId</th>
+				<th>SubmittedAt</th>
+			</tr>
+		</table>
+		 <script src= "reimbursement.js"></script>
+      </div>
+	    </body>
+</html>

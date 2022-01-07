@@ -216,12 +216,12 @@ public class RequestReviewServiceTest {
 	}
 
 	@Test
-	public Set<Reimbursement> getPendingReimbursementsSuccessfully(){
+	public void getPendingReimbursementsSuccessfully(){
 		Employee e = new Employee();
+		when(reimDao.getAll()).thenReturn(mockReimbursement);
 		Set<Reimbursement> requests = rrServ.getPendingReimbursements(e);
-		when(empDao.getById(e.getEmpId())).thenReturn(e);
-
-		return requests;
+		assertNotNull(requests);
+		// 
 	}
 
 }// End of Class
