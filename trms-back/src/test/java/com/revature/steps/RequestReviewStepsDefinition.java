@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.revature.app.TRMSApp;
+import com.revature.beans.Comment;
 import com.revature.beans.Employee;
 import com.revature.beans.Reimbursement;
 import com.revature.data.CommentDAO;
@@ -33,12 +34,21 @@ public class RequestReviewStepsDefinition {
 	
 	private CommentDAO cmtDao;
 	
+
+	@When("Can add additional information as a Comment")
+	public void can_add_additional_information_as_a(Comment comment) {
+		
+		eServ.addComment(comment);
+	}
+
+	
 	@Given("get Pending Reimbursements from employee needs or waiting for approval or rejection")
 	public void get_pending_reimbursements_from_employee_needs_or_waiting_for_approval_or_rejection
 	(Employee employee) {
 		
 	    rServ.getPendingReimbursements(employee);
 	}
+	
 
 	@When("Can request additional information")
 	public void can_request_additional_information(Reimbursement reimbursement) {

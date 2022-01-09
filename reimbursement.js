@@ -7,9 +7,7 @@ async function getReimbursements() {
 	console.log("Hi from Reimbursement");
 	let userInput = document.getElementById('eim').value;
 	console.log(userInput);
-    let response = await fetch('http://localhost:8080/request/' + userInput) {
-        method: 'POST'
-    });
+    let response = await fetch('http://localhost:8080/request/' + userInput);
 	//let data = response.json();
     console.log(response);
     if (response.status === 200) {
