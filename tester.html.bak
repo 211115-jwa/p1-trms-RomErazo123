@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Tuition Reimbursement Management System</title>
+	</head>
+<body>
 <div class="formGetAllByID">
         <h2 id="title1">Reimbursement information</h2>
 		  

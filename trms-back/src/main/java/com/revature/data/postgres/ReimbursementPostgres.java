@@ -27,7 +27,6 @@ public class ReimbursementPostgres implements ReimbursementDAO {
 		int generatedId=0;
 		try (Connection conn = connUtil.getConnection()) {
 			conn.setAutoCommit(false);
-			String[] keys = {"req_Id"};
 			String sql="insert into reimbursement"
 					+ " (emp_id,"
 					+ " event_date,"
@@ -40,6 +39,7 @@ public class ReimbursementPostgres implements ReimbursementDAO {
 					+ " status_id,"
 					+ " submitted_at)"
 					+ " values (?,?,?,?,?,?,?,?,?,?)";
+			String[] keys = {"req_id"};
 			PreparedStatement pStmt = conn.prepareStatement(sql,keys);
 			pStmt.setInt(1, dataToAdd.getRequestor().getEmpId());
 			pStmt.setDate(2, Date.valueOf(dataToAdd.getEventDate()));

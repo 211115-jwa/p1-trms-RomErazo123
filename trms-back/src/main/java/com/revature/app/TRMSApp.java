@@ -4,15 +4,10 @@ import io.javalin.Javalin;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
 
-import java.io.File;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
 import com.revature.controllers.RequestsController;
 
 public class TRMSApp {
-
+	
 
 	public static void main(String[] args) {
 		
@@ -26,7 +21,7 @@ public class TRMSApp {
 			path("/request", () -> {
 				post(RequestsController::submitReimbursementRequest);
 
-				path("/{id}", () -> {// /requestor
+				path("{id}", () -> {// /requestor		/{id}
 					get(RequestsController::getRequestsByRequestor);
 				});
 			});

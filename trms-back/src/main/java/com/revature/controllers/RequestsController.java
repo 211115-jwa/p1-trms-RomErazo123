@@ -33,6 +33,7 @@ public class RequestsController {
 		if (reqId != 0) {
 			ctx.status(HttpCode.CREATED);
 			request.setReqId(reqId);
+			System.out.println(request);
 			ctx.json(request);
 		} else {
 			ctx.status(400);
@@ -66,6 +67,7 @@ public class RequestsController {
 			Employee requestor = empServ.getEmployeeById(requestorId);
 			
 			if (requestor != null) {
+				System.out.println(requestor);
 				ctx.json(empServ.getReimbursementRequests(requestor));
 			} else {
 				ctx.status(404);

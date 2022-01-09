@@ -14,7 +14,7 @@ public class Employee {
 	private Department department;
 	
 	public Employee() {
-		empId=1;
+		empId=0;
 		firstName="First";
 		lastName="Last";
 		username="";

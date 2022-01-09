@@ -23,37 +23,15 @@ import io.cucumber.java.en.When;
 public class RequestReviewStepsDefinition {
 	
 	Employee employee = new Employee();
-	
 	Reimbursement reimbursement = new Reimbursement();
+	
 	RequestReviewService rServ = new RequestReviewServiceImpl();
 	private EmployeeService eServ = new EmployeeServiceImpl();
 	
-	private CommentDAO cmtDao;
 	private ReimbursementDAO reimDao;
 	private EmployeeDAO empDao;
 	
-//	File file = new File("src/main/resources/chromedriver.exe");
-//	WebDriver driver = new ChromeDriver();
-//	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Admin\\Downloads\\chromedriver_win32 (1)");
-//	//file.getAbsolutePath()
-//	driver.get("https://www.localhost:8080/request");
-//	
-//	File indexFile = new File("src/main/resources/TRSMindex.html");
-//
-//	public TRMSApp(WebDriver driver2) {
-//		driver = driver2;
-//	}
-//	
-//	private TRMSApp homePage;
-//	private WebDriver driver;
-//	
-//	{
-//		File file = new File("src/test/resources/chromedriver.exe");
-//		System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-//		
-//		driver = new ChromeDriver();
-//		homePage = new TRMSApp(driver);
-//	}
+	private CommentDAO cmtDao;
 	
 	@Given("get Pending Reimbursements from employee needs or waiting for approval or rejection")
 	public void get_pending_reimbursements_from_employee_needs_or_waiting_for_approval_or_rejection
